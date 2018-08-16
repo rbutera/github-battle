@@ -1,8 +1,8 @@
 {
-  "name": "react-battle",
+  "name": "github-battle",
   "version": "1.0.0",
   "main": "app/index.js",
-  "repository": "https://github.com/Raigasm/react-battle",
+  "repository": "https://github.com/Raigasm/github-battle",
   "author": "Rai Butera",
   "license": "MIT",
   "devDependencies": {
