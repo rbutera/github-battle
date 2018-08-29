@@ -1,5 +1,6 @@
 import React from "react"
 import PlayerInput from "./PlayerInput"
+import PlayerPreview from "./PlayerPreview"
 
 class Battle extends React.Component {
   constructor(props) {
@@ -10,9 +11,8 @@ class Battle extends React.Component {
       playerTwoName: "",
       playerTwoImage: null
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
-  handleSubmit(id, username) {
+  handleSubmit = (id, username) => {
     this.setState(() => {
       var newState = {}
       newState[id + "Name"] = username
@@ -22,24 +22,46 @@ class Battle extends React.Component {
       return newState
     })
   }
+  handleReset = id => {
+    this.setState(() => {
+      var newState = {}
+      newState[id + "Name"] = ""
+      newState[id + "Image"] = null
+      return newState
+    })
+  }
   render() {
     var playerOneName = this.state.playerOneName
     var playerTwoName = this.state.playerTwoName
     return (
       <div>
         <div className="row">
-          {!playerOneName && (
+          {!playerOneName ? (
             <PlayerInput
               id="playerOne"
               label="Player One"
               onSubmit={this.handleSubmit}
             />
+          ) : (
+            <PlayerPreview
+              id="playerOne"
+              username={this.state.playerOneName}
+              avatar={this.state.playerOneImage}
+              onReset={this.handleReset}
+            />
           )}
-          {!playerTwoName && (
+          {!playerTwoName ? (
             <PlayerInput
               id="playerTwo"
               label="Player Two"
               onSubmit={this.handleSubmit}
+            />
+          ) : (
+            <PlayerPreview
+              id="playerTwo"
+              username={this.state.playerTwoName}
+              avatar={this.state.playerTwoImage}
+              onReset={this.handleReset}
             />
           )}
         </div>
