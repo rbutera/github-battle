@@ -8,7 +8,7 @@ console.info("github app parameters will be", github_params)
 
 function getProfile(username) {
   return axios
-    .get("https://api.github.com/users/" + username + params)
+    .get("https://api.github.com/users/" + username + github_params)
     .then(user => {
       return user.data
     })
@@ -19,7 +19,7 @@ function getRepos(username) {
     "https://api.github.com/users/" +
       username +
       "/repos" +
-      params +
+      github_params +
       "&per_page=100"
   )
 }

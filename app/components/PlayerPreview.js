@@ -20,12 +20,7 @@ class PlayerPreview extends React.Component {
           />
           <h2 className="username">@{this.props.username}</h2>
         </div>
-        <button
-          className="reset"
-          onClick={this.props.onReset.bind(null, this.props.id)}
-        >
-          Reset
-        </button>
+        {this.props.children}
       </div>
     )
   }
@@ -33,9 +28,7 @@ class PlayerPreview extends React.Component {
 
 PlayerPreview.propTypes = {
   avatar: PropTypes.string.isRequired,
-  username: PropTypes.string.isRequired,
-  onReset: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired
+  username: PropTypes.string.isRequired
 }
 
 export default PlayerPreview

@@ -143,3 +143,7 @@ li {
 .reset:hover {
   cursor: pointer;
 }
+
+.battle-results-score {
+  text-align: center;
+}
