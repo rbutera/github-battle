@@ -4,6 +4,7 @@ import api from "../utils/api"
 import { Link } from "react-router-dom"
 import PropTypes from "prop-types"
 import PlayerPreview from "./PlayerPreview"
+import Loading from "./Loading"
 
 function Profile(props) {
   const info = props.info
@@ -77,7 +78,7 @@ class BattleResults extends React.Component {
   render() {
     const { error, winner, loser, loading } = this.state
     if (!!loading) {
-      return <p>Loading</p>
+      return <Loading />
     }
     if (error) {
       return (
