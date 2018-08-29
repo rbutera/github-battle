@@ -49,11 +49,16 @@ class Battle extends React.Component {
             />
           ) : (
             <PlayerPreview
-              id="playerOne"
               username={this.state.playerOneName}
               avatar={this.state.playerOneImage}
-              onReset={this.handleReset}
-            />
+            >
+              <button
+                className="reset"
+                onClick={this.handleReset.bind(null, "playerOne")}
+              >
+                Reset
+              </button>
+            </PlayerPreview>
           )}
           {!playerTwoName ? (
             <PlayerInput
@@ -63,11 +68,16 @@ class Battle extends React.Component {
             />
           ) : (
             <PlayerPreview
-              id="playerTwo"
               username={this.state.playerTwoName}
               avatar={this.state.playerTwoImage}
-              onReset={this.handleReset}
-            />
+            >
+              <button
+                className="reset"
+                onClick={this.handleReset.bind(null, "playerTwo")}
+              >
+                Reset
+              </button>
+            </PlayerPreview>
           )}
         </div>
 
