@@ -1,6 +1,7 @@
 import React from "react"
 import PlayerInput from "./PlayerInput"
 import PlayerPreview from "./PlayerPreview"
+import { Link } from "react-router-dom"
 
 class Battle extends React.Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class Battle extends React.Component {
       newState[id + "Name"] = username
       newState[id + "Image"] =
         "https://github.com/" + username + ".png?size=200"
-      console.info(`updating ${id} state to:` + newState)
+      console.info(`updating ${id} state to:`, newState)
       return newState
     })
   }
@@ -31,8 +32,12 @@ class Battle extends React.Component {
     })
   }
   render() {
+    var match = this.props.match
+
     var playerOneName = this.state.playerOneName
+    var playerOneImage = this.state.playerOneImage
     var playerTwoName = this.state.playerTwoName
+    var playerTwoImage = this.state.playerTwoImage
     return (
       <div>
         <div className="row">
@@ -65,6 +70,23 @@ class Battle extends React.Component {
             />
           )}
         </div>
+
+        {playerOneImage &&
+          playerTwoImage &&
+          playerOneName &&
+          playerTwoName && (
+            <Link
+              className="button"
+              to={{
+                pathname: match.url + "/results",
+                search: `?playerOneName=${
+                  this.state.playerOneName
+                }&playerTwoName=${this.state.playerTwoName}`
+              }}
+            >
+              Battle!
+            </Link>
+          )}
       </div>
     )
   }
